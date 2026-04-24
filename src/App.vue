@@ -359,7 +359,8 @@ watch(selectedFolder, () => {
 
 <style scoped>
 .page-shell {
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .page-header {
@@ -384,35 +385,52 @@ watch(selectedFolder, () => {
 }
 
 .page-main {
-  min-height: calc(100vh - 68px);
+  height: calc(100vh - 68px);
+  overflow: hidden;
 }
 
 .page-main :deep(.n-layout-scroll-container) {
-  min-height: calc(100vh - 68px);
+  height: 100%;
   display: flex;
   gap: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .song-list-panel {
   width: 320px;
   flex: 0 0 auto;
   min-width: 0;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
 }
 
 .list-card {
   height: 100%;
   border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.list-card :deep(.n-card-content) {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .detail-panel {
   flex: 1;
   min-width: 0;
+  min-height: 0;
   border-left: 1px solid #ebedf0;
 }
 
 .detail-card {
   height: 100%;
+  min-height: 0;
   border-radius: 0;
 }
 
@@ -439,6 +457,13 @@ watch(selectedFolder, () => {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.detail-tabs :deep(.n-tabs-pane-wrapper) {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .line-item {
@@ -527,13 +552,15 @@ watch(selectedFolder, () => {
 }
 
 .page-main.mobile {
-  min-height: calc(100vh - 68px);
+  height: calc(100vh - 68px);
 }
 
 .page-main.mobile :deep(.n-layout-scroll-container) {
   position: relative;
   display: block;
+  height: 100%;
   padding: 0;
+  overflow: hidden;
 }
 
 .page-main.mobile .song-list-panel {
